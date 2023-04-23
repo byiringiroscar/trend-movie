@@ -11,7 +11,7 @@ const Main = () => {
 
   useEffect(() => {
     dispatch(fetchMovies());
-  });
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -29,7 +29,13 @@ const Main = () => {
         funny, dramatic, romantic or anywhere in-between. So many titles, so much to experience.
       </p>
       <div className="main-card-container">
-        {movies.map((item) => (<CardContainer key={item.movie_type} />))}
+        {movies.map((item) => (
+          <CardContainer
+            key={item.movie_type}
+            movieCategory={item.movie_type}
+            moviesAll={item.movies}
+          />
+        ))}
       </div>
     </main>
   );

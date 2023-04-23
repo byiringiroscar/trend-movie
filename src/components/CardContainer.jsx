@@ -1,29 +1,25 @@
 import React from 'react';
 
-const CardContainer = () => (
-  <div className="card-container">
-    <h3 className="category">Action</h3>
-    <div className="card-movie">
-      <div className="card">
-        <div className="image-div">
-          <img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg" alt="movie" />
-        </div>
-        <p>Avatar</p>
-      </div>
-      <div className="card">
-        <div className="image-div">
-          <img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg" alt="movie" />
-        </div>
-        <p>Avatar</p>
-      </div>
-      <div className="card">
-        <div className="image-div">
-          <img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg" alt="movie" />
-        </div>
-        <p>Avatar</p>
+const CardContainer = (prop) => {
+  const { movieCategory, moviesAll } = prop;
+  return (
+    <div className="card-container">
+      <h3 className="category">{movieCategory}</h3>
+      <div className="card-movie">
+        {moviesAll.map((item) => {
+          const movieImage = `https://movies-w2a8.onrender.com${item.image}`;
+          return ((
+            <div key={item.name} className="card">
+              <div className="image-div">
+                <img src={movieImage} alt="movie" />
+              </div>
+              <p>{item.name}</p>
+            </div>
+          ));
+        })}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CardContainer;
